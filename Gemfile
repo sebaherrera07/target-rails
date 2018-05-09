@@ -94,3 +94,6 @@ gem 'database_cleaner', '~> 1.7'
 
 # Faker
 gem 'faker', '~> 1.8', '>= 1.8.7'
+
+# jQuery
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'

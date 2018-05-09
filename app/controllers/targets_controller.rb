@@ -7,12 +7,12 @@ class TargetsController < ApplicationController
   def create
     @target = Target.new(target_params)
     if @target.save
-      flash[:success] = 'Target created!'
+      flash.now[:success] = 'Target created!'
     else
       if @target.errors[:latitude].any?
-        flash[:error] = 'Target not set on the map.'
+        flash.now[:error] = 'Target not set on the map.'
       else
-        flash[:error] = 'Target data incomplete.'
+        flash.now[:error] = 'Target data incomplete.'
       end
     end
     load_dropdown_topics
