@@ -8,13 +8,13 @@ default: &default
   port: 5432
 
 development:
- <<: *default
- database: target_dev
+  <<: *default
+  database: target_dev
 
 test:
- <<: *default
- database: target_test
+  <<: *default
+  database: target_test
 
 production:
- <<: *default
- database: target_prod
+  <<: *default
+  database: target_prod

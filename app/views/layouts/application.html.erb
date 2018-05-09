@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Target</title>
-        <%= csrf_meta_tags %>
-        <%= csp_meta_tag %>
+  <head>
+    <title>Target</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    </head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-    <body>
-        <div id="main-container" class="container-fluid container-full-size">
-            <%= render partial: "shared/alerts" %>
-            <div class="row" style="height:inherit">
-                <div id="sidebar" class="col-md-3">
-                    <%= render partial: "shared/sidebar" %>
-                </div>
-                <div id="content" class="col-md-9">
-                    <%= yield %>
-                </div>
-            </div>
-        </div>
-    </body>
+  <body>
+    <div id="main-container" class="container-fluid container-full-size">
+      <%= render partial: "shared/alerts" %>
+      <div class="row" style="height:inherit">
+          <div id="sidebar" class="col-md-3">
+            <%= render partial: "shared/sidebar" %>
+          </div>
+          <div id="content" class="col-md-9">
+            <%= yield %>
+          </div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,17 +1,17 @@
 <%= form_for :target, method: :post do |form| %>
-    <h4 class="sidebar-subtitle">CREATE NEW TARGET</h4>
-    
-    <%= form.label :title, "Target Title" , class: 'sidebar-input-label' %><br>
-    <%= form.text_field :title , class: 'sidebar-input-text' %><br>
+  <h4 class="sidebar-subtitle">CREATE NEW TARGET</h4>
+  
+  <%= form.label :title, "Target Title" , class: 'sidebar-input-label' %><br>
+  <%= form.text_field :title , class: 'sidebar-input-text' %><br>
 
-    <%= form.label :size, "Area Length (in metres)" , class: 'sidebar-input-label' %><br>
-    <%= form.text_field :size , class: 'sidebar-input-text' %><br>
+  <%= form.label :size, "Area Length (in metres)" , class: 'sidebar-input-label' %><br>
+  <%= form.text_field :size , class: 'sidebar-input-text' %><br>
 
-    <%= form.label :topic , "Select a Topic" , class: 'sidebar-input-label' %><br>
-    <%= select("target", "topic", options_for_select(@topics), {:include_blank => "What do you want to talk about?"} , class: 'sidebar-input-text') %><br>
+  <%= form.label :topic , "Select a Topic" , class: 'sidebar-input-label' %><br>
+  <%= select("target", "topic", options_for_select(@topics), {:include_blank => "What do you want to talk about?"} , class: 'sidebar-input-text') %><br>
     
-    <%= form.hidden_field :latitude %>
-    <%= form.hidden_field :longitude %>
+  <%= form.hidden_field :latitude %>
+  <%= form.hidden_field :longitude %>
     
-    <%= form.submit 'SAVE TARGET', :class => 'sidebar-form-button' %>  
+  <%= form.submit 'SAVE TARGET', :class => 'sidebar-form-button' %>  
 <% end %>
