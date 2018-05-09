@@ -61,8 +61,36 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+
+###### ADDITIONAL GEMS ######
+
 # Bootstrap 4
 gem 'bootstrap', '~> 4.1.1'
 
 # Font Awesome
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
+
+# Postgres
+gem 'pg', '~> 1.0'
+
+# Ruby Formatter
+gem 'rubocop', '~> 0.55.0'
+
+# Ruby debugger
+gem 'debase', '~> 0.2.2'
+gem 'ruby-debug-ide', '~> 0.6.1'
+gem 'rebase', '~> 1.1'
+
+# RSpec (for testing)
+gem 'rspec', '~> 3.7'
+gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
+gem 'rails-controller-testing', '~> 1.0', '>= 1.0.2'
+
+# FactoryBot
+gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+
+# Database Cleaner
+gem 'database_cleaner', '~> 1.7'
+
+# Faker
+gem 'faker', '~> 1.8', '>= 1.8.7'

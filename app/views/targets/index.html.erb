@@ -1,13 +1,1 @@
-<div id="map"></div>
-
-<script>
-    var map;
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.9067557, lng: -56.2006151},
-            zoom: 17
-        });
-    }
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFauPb-2KMpvawQdAHogYpUvwFfmQccAw&callback=initMap" async defer></script>
+<%= render partial: "shared/map" %>

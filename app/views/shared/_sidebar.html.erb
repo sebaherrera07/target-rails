@@ -1,0 +1,22 @@
+<%# SIDEBAR HEADER %>
+<div class="white-line-20"></div>
+<div id="sidebar_header">
+    <a href="#" class="sidebar-menu-icon"><i class="fa fa-bars"></i></a>
+    <h1 class="sidebar-title">TARGET</h1>
+</div>
+
+<%# SIDEBAR USER %>
+<div id="sidebar_user">
+    <%= render partial: "shared/sidebar_user" %>
+    <div class="Line"></div>
+</div>
+
+<%# SIDEBAR CONTENT %>
+<div id="sidebar_content">
+    <%= render partial: "targets/new_target" %>
+</div>
+
+<%# SIDEBAR FOOTER %>
+<div id="sidebar_footer">
+    <%= image_tag("smilies.png", class: "smilies", size: "48x28") %>
+</div>
