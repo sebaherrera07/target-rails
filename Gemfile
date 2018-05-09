@@ -97,3 +97,6 @@ gem 'faker', '~> 1.8', '>= 1.8.7'
 
 # jQuery
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+
+# Annotate
+gem 'annotate', '~> 2.7', '>= 2.7.3'

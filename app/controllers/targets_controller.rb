@@ -1,21 +1,20 @@
 # TargetsController
 class TargetsController < ApplicationController
-  def index
-    load_dropdown_topics
-  end
+  helper_method :topics
+
+  def index; end
 
   def create
     @target = Target.new(target_params)
     if @target.save
-      flash.now[:success] = 'Target created!'
+      flash.now[:success] = t(:alert_success_target_created)
     else
       if @target.errors[:latitude].any?
-        flash.now[:error] = 'Target not set on the map.'
+        flash.now[:error] = t(:alert_error_target_not_set)
       else
-        flash.now[:error] = 'Target data incomplete.'
+        flash.now[:error] = t(:alert_error_target_data_incomplete)
       end
     end
-    load_dropdown_topics
     render action: 'index'
   end
 
@@ -25,8 +24,9 @@ class TargetsController < ApplicationController
     params.require(:target).permit(:title, :topic, :size, :latitude, :longitude)
   end
 
-  def load_dropdown_topics
-    ts = %w[Sports Travel Politics Arts Dating Music Movies Series Food]
-    @topics = ts.map { |x| [x, x] }.to_h
+  def topics
+    topics_array = [t(:topics_sports), t(:topics_travel), t(:topics_politics), t(:topics_arts), t(:topics_dating),
+                    t(:topics_music), t(:topics_movies), t(:topics_series), t(:topics_food)]
+    @topics = topics_array.map { |x| [x, x] }.to_h
   end
 end
