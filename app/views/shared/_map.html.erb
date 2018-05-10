@@ -4,7 +4,7 @@
 <script>
   var map;
   var marker;
-  //var existingTargets = <%= @targets %>;
+  var existingTargets = '<%= raw @targets %>';
 
   function initMap() {
     var myLatlng = {lat: -34.9067557, lng: -56.2006151};
@@ -19,7 +19,7 @@
       loadFormLatLng(e.latLng);
     });
 
-    //loadExistingTargets();
+    loadExistingTargets(map);
   }
 
   function placeMarkerAndPanTo(latLng, map) {
@@ -28,6 +28,8 @@
     }     
     marker = new google.maps.Marker({
       position: latLng,
+      animation: google.maps.Animation.DROP,
+      icon: 'http://maps.google.com/mapfiles/ms/icons/arrow.png',
       map: map
     });
     map.panTo(latLng);
@@ -38,8 +40,16 @@
     document.getElementById('target_longitude').value = latLng.lng().toFixed(15);
   }
 
-  //function loadExistingTargets(){
-  //  var existingTargets = @targets;
-  //  alert(existingTargets);
-  //}
+  function loadExistingTargets(map){
+    var targetList = JSON.parse(existingTargets);
+    for (var i = 0; i < targetList.length; i++) {
+      var target = targetList[i];
+      var pos = { lat: parseFloat(target.latitude), lng: parseFloat(target.longitude) };
+      var mark = new google.maps.Marker({
+        position: pos,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+        map: map
+      });
+    }
+  }
 </script>
