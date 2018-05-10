@@ -2,7 +2,7 @@ class TargetsController < ApplicationController
   helper_method :topics
 
   def index
-    @targets = Target.all
+    @targets = Target.all.to_json
   end
 
   def create
