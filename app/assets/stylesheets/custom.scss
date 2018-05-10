@@ -1,41 +1,22 @@
 @import 'target-variables';
 
-.white-line-10 {
-  margin-top: 10px;
-}
-.white-line-20 {
-  margin-top: 20px;
-}
-.white-line-40 {
-  margin-top: 40px;
-}
-.white-line-60 {
-  margin-top: 60px;
-}
-.white-line-80 {
-  margin-top: 80px;
-}
-.white-line-100 {
-  margin-top: 100px;
-}
-
 .bottom-center {
-  position: absolute;
   bottom: 20px;
   margin: 0 auto;
+  position: absolute;
 }
 
 .container-full-size {
   height: 100%;
-  width: 100%;
   position: absolute;
+  width: 100%;
 }
 
 #custom-alert {
   float: right;
   position: absolute;
-  z-index: 1;
+  right: 20px;
+  top: 20px;
   width: 20%;
-  top: 1em;
-  right: 1em;
+  z-index: 1;
 }
