@@ -33,7 +33,7 @@ RSpec.describe TargetsController do
 
     it 'shows a success flash' do
       post :create, params: params
-      expect(flash[:success]).to match(/Target created!/)
+      expect(flash[:success]).to match(I18n.t(:alert_success_target_created))
     end
 
     context 'when input form incomplete' do
@@ -63,7 +63,7 @@ RSpec.describe TargetsController do
 
       it 'shows a error flash' do
         post :create, params: params
-        expect(flash[:error]).to match(/Target data incomplete./)
+        expect(flash[:error]).to match(I18n.t(:alert_error_target_data_incomplete))
       end
     end
   end
@@ -95,7 +95,7 @@ RSpec.describe TargetsController do
 
     it 'shows a error flash' do
       post :create, params: params
-      expect(flash[:error]).to match(/Target not set on the map./)
+      expect(flash[:error]).to match(I18n.t(:alert_error_target_not_set))
     end
   end
 end

@@ -11,6 +11,7 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
+/.vscode
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
@@ -46,6 +47,9 @@ bower.json
 
 # Ignore node_modules
 node_modules/
+
+# Ignore database config
+config/database.yml
 
 # Ignore tests generated file
 spec/examples.txt
