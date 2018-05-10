@@ -4,6 +4,7 @@
 <script>
   var map;
   var marker;
+  //var existingTargets = <%= @targets %>;
 
   function initMap() {
     var myLatlng = {lat: -34.9067557, lng: -56.2006151};
@@ -17,6 +18,8 @@
       placeMarkerAndPanTo(e.latLng, map);
       loadFormLatLng(e.latLng);
     });
+
+    //loadExistingTargets();
   }
 
   function placeMarkerAndPanTo(latLng, map) {
@@ -34,4 +37,9 @@
     document.getElementById('target_latitude').value = latLng.lat().toFixed(15);
     document.getElementById('target_longitude').value = latLng.lng().toFixed(15);
   }
+
+  //function loadExistingTargets(){
+  //  var existingTargets = @targets;
+  //  alert(existingTargets);
+  //}
 </script>
