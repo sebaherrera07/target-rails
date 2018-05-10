@@ -1,10 +1,15 @@
 @import 'target-variables';
 
 /* GENERAL */
+body,
+html {
+  font-family: $font-family-base;
+}
+
 .close {
-  width: 24px;
-  height: 24px;
   background-color: $black;
+  height: 24px;
+  width: 24px;
 }
 
 .overlay {
@@ -14,40 +19,41 @@
 
 /* MAP */
 #map {
-  width: 100%;
   height: 100%;
   position: absolute;
+  width: 100%;
 }
 
 
 /* SIDEBAR */
 .sidebar-menu-icon {
-  width: 20.3px;
-  height: 13.5px;
   color: $black;
-  margin-top: 20px;
+  display: block;
+  height: 13.5px;
   margin-left: 20px;
+  margin-top: 20px;
+  width: 20.3px;
 }
 
 .smilies {
-  object-fit: contain;
-  position: absolute;
   bottom: 20px;
   display: block;
   left: 43%;
+  object-fit: contain;
+  position: absolute;
 }
 
 .line {
-  width: 121px;
-  height: 0.5px;
   border: solid 0.5px $black;
+  height: 0.5px;
   margin: 30px auto 20px auto;
+  width: 121px;
 }
 
 .sidebar-img-circle {
-  width: 125px;
-  height: 124px;
-  object-fit: contain;
   display: block;
+  height: 124px;
   margin: 20px auto 0 auto;
+  object-fit: contain;
+  width: 125px;
 }
