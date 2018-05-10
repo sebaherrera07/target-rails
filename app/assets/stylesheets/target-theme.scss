@@ -1,6 +1,11 @@
 @import 'target-variables';
 
 /* GENERAL */
+body,
+html {
+  font-family: $font-family-base;
+}
+
 .close {
   background-color: $black;
   height: 24px;
