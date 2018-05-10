@@ -61,3 +61,8 @@ en:
   topics_movies: "Movies"
   topics_series: "Series"
   topics_food: "Food"
+
+  # Maps
+  maps_location_found: "You are here."
+  maps_location_failed: "Error: The Geolocation service failed."
+  maps_location_browser_not_supported: "Error: Your browser doesn't support geolocation."
