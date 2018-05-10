@@ -1,8 +1,9 @@
-# TargetsController
 class TargetsController < ApplicationController
   helper_method :topics
 
-  def index; end
+  def index
+    @targets = Target.all
+  end
 
   def create
     @target = Target.new(target_params)
