@@ -25,8 +25,6 @@ class TargetsController < ApplicationController
   end
 
   def topics
-    topics_array = [t(:topics_sports), t(:topics_travel), t(:topics_politics), t(:topics_arts), t(:topics_dating),
-                    t(:topics_music), t(:topics_movies), t(:topics_series), t(:topics_food)]
-    @topics = topics_array.map { |x| [x, x] }.to_h
+    @topics = Target::TOPICS.map { |x| [x, x] }.to_h
   end
 end
