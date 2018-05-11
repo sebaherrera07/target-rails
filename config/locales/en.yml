@@ -46,7 +46,7 @@ en:
   alert_error_target_data_incomplete: "Target data incomplete."
 
   # Labels
-  label_target_title: "Target Title"
+  label_target_title: "Title"
   label_target_size: "Area Length (in metres)"
   label_target_topic: "Select a Topic"
 
