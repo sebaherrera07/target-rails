@@ -4,6 +4,7 @@
 <script>
   var map;
   var marker;
+  var existingTargets = '<%= raw @targets %>';
 
   function initMap() {
     var myLatlng = {lat: -34.9067557, lng: -56.2006151};
@@ -13,10 +14,14 @@
       zoom: 17
     });
 
+    showCurrentLocation();
+
     map.addListener('click', function(e) {
       placeMarkerAndPanTo(e.latLng, map);
       loadFormLatLng(e.latLng);
     });
+
+    loadExistingTargets(map);
   }
 
   function placeMarkerAndPanTo(latLng, map) {
@@ -25,6 +30,8 @@
     }     
     marker = new google.maps.Marker({
       position: latLng,
+      animation: google.maps.Animation.DROP,
+      icon: 'http://maps.google.com/mapfiles/ms/icons/arrow.png',
       map: map
     });
     map.panTo(latLng);
@@ -33,5 +40,47 @@
   function loadFormLatLng(latLng){
     document.getElementById('target_latitude').value = latLng.lat().toFixed(15);
     document.getElementById('target_longitude').value = latLng.lng().toFixed(15);
+  }
+
+  function loadExistingTargets(map){
+    var targetList = JSON.parse(existingTargets);
+    for (var i = 0; i < targetList.length; i++) {
+      var target = targetList[i];
+      var pos = { lat: parseFloat(target.latitude), lng: parseFloat(target.longitude) };
+      var mark = new google.maps.Marker({
+        position: pos,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+        map: map
+      });
+    }
+  }
+
+  function showCurrentLocation() {
+    infoWindow = new google.maps.InfoWindow;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('<%=I18n.t(:maps_location_found)%>');
+        infoWindow.open(map);
+        map.setCenter(pos);
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+  }
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+      '<%=I18n.t(:maps_location_failed)%>' :
+      '<%=I18n.t(:maps_location_browser_not_supported)%>');
+    infoWindow.open(map);
   }
 </script>

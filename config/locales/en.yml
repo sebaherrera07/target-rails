@@ -46,7 +46,7 @@ en:
   alert_error_target_data_incomplete: "Target data incomplete."
 
   # Labels
-  label_target_title: "Target Title"
+  label_target_title: "Title"
   label_target_size: "Area Length (in metres)"
   label_target_topic: "Select a Topic"
 
@@ -61,3 +61,8 @@ en:
   topics_movies: "Movies"
   topics_series: "Series"
   topics_food: "Food"
+
+  # Maps
+  maps_location_found: "You are here."
+  maps_location_failed: "Error: The Geolocation service failed."
+  maps_location_browser_not_supported: "Error: Your browser doesn't support geolocation."
