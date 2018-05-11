@@ -8,6 +8,7 @@ class TargetsController < ApplicationController
   def create
     @target = Target.new(target_params)
     if @target.save
+      @target = nil
       flash.now[:success] = t(:alert_success_target_created)
     else
       if @target.errors[:latitude].any?
