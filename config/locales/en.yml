@@ -30,4 +30,34 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  # General
+  edit: "Edit"
+  logout: "Logout"
+  
+  # Titles
+  title_create_new_target: "CREATE NEW TARGET"
+
+  # Buttons
+  btn_save_target: "SAVE TARGET"
+
+  # Alerts
+  alert_success_target_created: "Target not set on the map."
+  alert_error_target_not_set: "Target not set on the map."
+  alert_error_target_data_incomplete: "Target data incomplete."
+
+  # Labels
+  label_target_title: "Target Title"
+  label_target_size: "Area Length (in metres)"
+  label_target_topic: "Select a Topic"
+
+  # Topics options
+  topics_blank_option: "What do you want to talk about?"
+  topics_sports: "Sports"
+  topics_travel: "Travel"
+  topics_politics: "Politics"
+  topics_arts: "Arts"
+  topics_dating: "Dating"
+  topics_music: "Music"
+  topics_movies: "Movies"
+  topics_series: "Series"
+  topics_food: "Food"

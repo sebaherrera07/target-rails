@@ -1,3 +1,2 @@
 class ContactController < ApplicationController
-    
 end

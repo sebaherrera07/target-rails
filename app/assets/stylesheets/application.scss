@@ -14,7 +14,6 @@
  *= require_self
  */
 
-@import "bootstrap";
-@import "target";
-@import "custom";
-@import "font-awesome";
+@import 'target-variables';
+@import 'bootstrap';
+@import 'font-awesome';

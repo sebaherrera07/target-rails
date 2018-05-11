@@ -1,0 +1,59 @@
+@import 'target-variables';
+
+/* GENERAL */
+body,
+html {
+  font-family: $font-family-base;
+}
+
+.close {
+  background-color: $black;
+  height: 24px;
+  width: 24px;
+}
+
+.overlay {
+  background-color: $dark-blue;
+}
+
+
+/* MAP */
+#map {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+
+/* SIDEBAR */
+.sidebar-menu-icon {
+  color: $black;
+  display: block;
+  height: 13.5px;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 20.3px;
+}
+
+.smilies {
+  bottom: 20px;
+  display: block;
+  left: 43%;
+  object-fit: contain;
+  position: absolute;
+}
+
+.line {
+  border: solid 0.5px $black;
+  height: 0.5px;
+  margin: 30px auto 20px auto;
+  width: 121px;
+}
+
+.sidebar-img-circle {
+  display: block;
+  height: 124px;
+  margin: 20px auto 0 auto;
+  object-fit: contain;
+  width: 125px;
+}

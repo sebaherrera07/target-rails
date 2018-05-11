@@ -1,0 +1,22 @@
+@import 'target-variables';
+
+.bottom-center {
+  bottom: 20px;
+  margin: 0 auto;
+  position: absolute;
+}
+
+.container-full-size {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+#custom-alert {
+  float: right;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 20%;
+  z-index: 1;
+}
