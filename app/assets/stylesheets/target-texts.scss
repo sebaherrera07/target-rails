@@ -1,97 +1,71 @@
 @import 'target-variables';
 
-.sidebar-title {
+.sidebar-text-wrapper {
   color: $black;
-  font-size: 20px;
   font-stretch: normal;
   font-style: normal;
-  font-weight: bold;
-  letter-spacing: 2px;
   line-height: normal;
   text-align: center;
-}
 
-.sidebar-subtitle {
-  color: $black;
-  font-size: 15px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: 1.6px;
-  line-height: normal;
-  text-align: center;
-}
+  .sidebar-title {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
 
-.sidebar-username {
-  color: $black;
-  font-size: 14px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: 2.1px;
-  line-height: normal;
-  text-align: center;
+  .sidebar-subtitle {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+  }
+
+  .sidebar-username {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2.1px;
+  }
+
+  .sidebar-logout { 
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.8px;
   
-}
+    a {
+      color: $dark-gray;
+    }
+    
+    .sidebar-edit {
+      color: $bright-sky-blue;
+    }
+  }
 
-.sidebar-logout {
-  color: $dark-gray;
-  font-size: 12px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: 1.8px;
-  line-height: normal;
-  text-align: center;
-}
-
-.sidebar-logout a {
-  color: $dark-gray;
-  font-size: 12px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: 1.8px;
-  line-height: normal;
-  text-align: center;
-}
+  .sidebar-input-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .7px;
+  }
   
-.sidebar-logout .sidebar-edit {
-  color: $bright-sky-blue;
-  font-weight: bold;
-}
-
-.sidebar-input-label {
-  color: $black;
-  font-size: 13px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: 0.7px;
-  letter-spacing: normal;
-  line-height: normal;
-  margin-left: 15%;
-  text-align: left;
-}
-
-.sidebar-input-text {
-  border: solid 0.5px $black;
-  display: block;
-  font-size: 13px;
-  height: 39px;
-  margin: 0 auto;
-  text-align: center;
-  width: 70%;
-}
-
-.sidebar-form-button {
-  background-color: $black;
-  border: solid 1px $black;
-  box-shadow: 0 2px 4px 0 $shadow;
-  color: $white;
-  display: block;
-  font-size: 11px;
-  height: 39px;
-  margin: 0 auto;
-  width: 25%;
+  .sidebar-input-text {
+    border: solid .5px $black;
+    display: block;
+    font-size: 13px;
+    height: 39px;
+    margin: 0 auto;
+    text-align: center;
+    text-align-last: center;
+    width: 70%;
+  }
+  
+  .sidebar-form-button {
+    background-color: $black;
+    border: solid 1px $black;
+    box-shadow: 0 2px 4px 0 $shadow;
+    color: $white;
+    display: block;
+    font-size: 11px;
+    height: 39px;
+    margin: 0 auto;
+    min-width: 90px;
+    width: 25%;   
+  }
 }
