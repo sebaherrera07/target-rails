@@ -7,17 +7,13 @@ class TargetsController < ApplicationController
 
   def create
     @target = Target.new(target_params)
-    if @target.save
-      @target = nil
-      flash.now[:success] = t(:alert_success_target_created)
-    else
-      if @target.errors[:latitude].any?
-        flash.now[:error] = t(:alert_error_target_not_set)
+    respond_to do |format|
+      if @target.save
+        format.json { render json: { target: @target }, status: 200 }
       else
-        flash.now[:error] = t(:alert_error_target_data_incomplete)
+        format.json { render json: { errors: @target.errors }, status: 422 }
       end
     end
-    render action: 'index'
   end
 
   private

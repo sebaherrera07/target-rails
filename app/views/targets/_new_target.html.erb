@@ -1,4 +1,4 @@
-<%= form_for :target, method: :post, html: { autocomplete: "off" } do |form| %>
+<%= form_for :target, method: :post, :remote => true, html: { id: "form_new_target", autocomplete: "off"}, data: { type: :json } do |form| %>
   <h4 class="sidebar-subtitle"><%=t(:title_create_new_target)%></h4>
   
   <%= form.label :title, t(:label_target_title) , class: 'sidebar-input-label' %><br>

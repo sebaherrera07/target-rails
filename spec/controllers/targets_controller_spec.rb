@@ -4,20 +4,25 @@ RSpec.describe TargetsController do
   describe 'POST create' do
     let(:params) { { target: attributes_for(:target) } }
 
-    it 'renders index' do
-      post :create, params: params
-      expect(response).to render_template('index')
-    end
-
     it 'creates a target' do
       expect do
-        post :create, params: params
+        post :create, params: params, as: :json
       end.to change(Target, :count).by(1)
     end
 
-    it 'shows success flash' do
-      post :create, params: params
-      expect(flash[:success]).to match(I18n.t(:alert_success_target_created))
+    it 'returns success' do
+      post :create, params: params, as: :json
+      expect(response).to be_successful
+    end
+
+    it 'returns the target as json' do
+      post :create, params: params, as: :json
+      target_json = JSON.parse(response.body)
+      expect(target_json['target']['title']).to eq(params[:target][:title])
+      expect(target_json['target']['size']).to eq(params[:target][:size])
+      expect(target_json['target']['topic']).to eq(params[:target][:topic])
+      expect(target_json['target']['latitude']).to eq(params[:target][:latitude])
+      expect(target_json['target']['longitude']).to eq(params[:target][:longitude])
     end
 
     context 'when input form incomplete' do
@@ -25,13 +30,19 @@ RSpec.describe TargetsController do
 
       it 'does not create a target' do
         expect do
-          post :create, params: params
+          post :create, params: params, as: :json
         end.not_to change(Target, :count)
       end
 
-      it 'shows error flash' do
-        post :create, params: params
-        expect(flash[:error]).to match(I18n.t(:alert_error_target_data_incomplete))
+      it 'returns http error code' do
+        post :create, params: params, as: :json
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns the errors as json' do
+        post :create, params: params, as: :json
+        errors_json = JSON.parse(response.body)
+        expect(errors_json['errors']['title'].length).to be(1)
       end
     end
 
@@ -40,13 +51,20 @@ RSpec.describe TargetsController do
 
       it 'does not create a target' do
         expect do
-          post :create, params: params
+          post :create, params: params, as: :json
         end.not_to change(Target, :count)
       end
 
-      it 'shows error flash' do
-        post :create, params: params
-        expect(flash[:error]).to match(I18n.t(:alert_error_target_not_set))
+      it 'returns http error code' do
+        post :create, params: params, as: :json
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns the errors as json' do
+        post :create, params: params, as: :json
+        errors_json = JSON.parse(response.body)
+        expect(errors_json['errors']['latitude'].length).to be(1)
+        expect(errors_json['errors']['longitude'].length).to be(1)
       end
     end
   end
