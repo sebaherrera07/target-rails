@@ -100,3 +100,6 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 
 # Annotate
 gem 'annotate', '~> 2.7', '>= 2.7.3'
+
+# Toastr
+gem 'toastr_rails', '~> 2.1', '>= 2.1.3'

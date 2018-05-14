@@ -24,10 +24,14 @@
     loadExistingTargets(map);
   }
 
-  function placeMarkerAndPanTo(latLng, map) {
+  function hideSelectedMarker(){
     if(marker){
       marker.setMap(null);
-    }     
+    }
+  }
+
+  function placeMarkerAndPanTo(latLng, map) {
+    hideSelectedMarker();
     marker = new google.maps.Marker({
       position: latLng,
       animation: google.maps.Animation.DROP,

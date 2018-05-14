@@ -1,1 +1,36 @@
 <%= render partial: "shared/map" %>
+
+<script>
+  $(document).ready(function() {
+    var formNewTarget = $('#form_new_target');
+
+    formNewTarget.on('ajax:success', handleTargetCreated);
+    formNewTarget.on('ajax:error', showErrorAlert);
+
+    function handleTargetCreated(event) {
+      toastr.success("<%=I18n.t(:alert_success_target_created)%>");
+      var target = event.detail[0]["target"];
+      formNewTarget.trigger("reset");
+      hideSelectedMarker();
+      addTargetInMap(target);
+    }
+
+    function addTargetInMap(target){
+      var pos = { lat: parseFloat(target.latitude), lng: parseFloat(target.longitude) };
+      var mark = new google.maps.Marker({
+        position: pos,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+        map: map
+      });
+    }
+
+    function showErrorAlert(event) {
+      var errors = event.detail[0]["errors"];
+      if (errors.latitude){
+        toastr.warning("<%=I18n.t(:alert_error_target_not_set)%>");
+      } else {
+        toastr.warning("<%=I18n.t(:alert_error_target_data_incomplete)%>");
+      }
+    }
+  });
+</script>
