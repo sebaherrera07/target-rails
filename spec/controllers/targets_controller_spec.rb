@@ -4,6 +4,10 @@ RSpec.describe TargetsController do
   describe 'POST create' do
     let(:params) { { target: attributes_for(:target) } }
 
+    before(:each) do
+      post :create, params: params, as: :json
+    end
+
     it 'creates a target' do
       expect do
         post :create, params: params, as: :json
@@ -11,12 +15,10 @@ RSpec.describe TargetsController do
     end
 
     it 'returns success' do
-      post :create, params: params, as: :json
       expect(response).to be_successful
     end
 
     it 'returns the target as json' do
-      post :create, params: params, as: :json
       target_json = JSON.parse(response.body)
       expect(target_json['target']['title']).to eq(params[:target][:title])
       expect(target_json['target']['size']).to eq(params[:target][:size])
@@ -35,14 +37,12 @@ RSpec.describe TargetsController do
       end
 
       it 'returns http error code' do
-        post :create, params: params, as: :json
         expect(response).to have_http_status(422)
       end
 
       it 'returns the errors as json' do
-        post :create, params: params, as: :json
         errors_json = JSON.parse(response.body)
-        expect(errors_json['errors']['title'].length).to be(1)
+        expect(errors_json['errors']['title']).to be_present
       end
     end
 
@@ -56,15 +56,13 @@ RSpec.describe TargetsController do
       end
 
       it 'returns http error code' do
-        post :create, params: params, as: :json
         expect(response).to have_http_status(422)
       end
 
       it 'returns the errors as json' do
-        post :create, params: params, as: :json
         errors_json = JSON.parse(response.body)
-        expect(errors_json['errors']['latitude'].length).to be(1)
-        expect(errors_json['errors']['longitude'].length).to be(1)
+        expect(errors_json['errors']['latitude'].length).to be_present
+        expect(errors_json['errors']['longitude'].length).to be_present
       end
     end
   end
