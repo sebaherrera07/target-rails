@@ -7,12 +7,10 @@ class TargetsController < ApplicationController
 
   def create
     @target = Target.new(target_params)
-    respond_to do |format|
-      if @target.save
-        format.json { render json: { target: @target }, status: 200 }
-      else
-        format.json { render json: { errors: @target.errors }, status: 422 }
-      end
+    if @target.save
+      render json: { target: @target }, status: 200
+    else
+      render json: { errors: @target.errors }, status: 422
     end
   end
 
