@@ -73,9 +73,6 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 # Postgres
 gem 'pg', '~> 1.0'
 
-# Ruby Formatter
-gem 'rubocop', '~> 0.55.0'
-
 # Ruby debugger
 gem 'debase', '~> 0.2.2'
 gem 'ruby-debug-ide', '~> 0.6.1'
@@ -103,3 +100,9 @@ gem 'annotate', '~> 2.7', '>= 2.7.3'
 
 # Toastr
 gem 'toastr_rails', '~> 2.1', '>= 2.1.3'
+
+# Code Analysis
+gem 'rubocop', '~> 0.55.0'
+gem 'rails_best_practices', '~> 1.19', '>= 1.19.2'
+gem 'reek', '~> 4.8', '>= 4.8.1'
+gem 'brakeman', '~> 4.3'
