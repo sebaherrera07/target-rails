@@ -50,4 +50,12 @@ RSpec.describe TargetsController do
       end
     end
   end
+
+  describe 'GET index' do
+    it 'assigns @targets' do
+      targets = Target.all
+      get :index
+      expect(assigns(:targets)).to eq(targets)
+    end
+  end
 end

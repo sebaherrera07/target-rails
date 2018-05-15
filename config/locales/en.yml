@@ -41,7 +41,7 @@ en:
   btn_save_target: "SAVE TARGET"
 
   # Alerts
-  alert_success_target_created: "Target not set on the map."
+  alert_success_target_created: "Target created!"
   alert_error_target_not_set: "Target not set on the map."
   alert_error_target_data_incomplete: "Target data incomplete."
 
