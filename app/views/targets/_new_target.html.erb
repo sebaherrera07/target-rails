@@ -1,17 +1,17 @@
-<%= form_for :target, method: :post, html: { autocomplete: "off" } do |form| %>
-  <h4 class="sidebar-subtitle"><%=t(:title_create_new_target)%></h4>
+<%= form_for :target, method: :post, :remote => true, html: { id: "form_new_target", autocomplete: "off"}, data: { type: :json } do |form| %>
+  <h4 class="sidebar-subtitle"><%=I18n.t(:title_create_new_target)%></h4>
   
-  <%= form.label :title, t(:label_target_title) , class: 'sidebar-input-label' %><br>
+  <%= form.label :title, I18n.t(:label_target_title) , class: 'sidebar-input-label' %><br>
   <%= form.text_field :title , class: 'sidebar-input-text' %><br>
 
-  <%= form.label :size, t(:label_target_size) , class: 'sidebar-input-label' %><br>
+  <%= form.label :size, I18n.t(:label_target_size) , class: 'sidebar-input-label' %><br>
   <%= form.text_field :size , class: 'sidebar-input-text' %><br>
 
-  <%= form.label :topic , t(:label_target_topic) , class: 'sidebar-input-label' %><br>
-  <%= select("target", "topic", options_for_select(topics, @target ? @target.topic : nil), {:include_blank => t(:topics_blank_option)} , class: 'sidebar-input-text') %><br>
+  <%= form.label :topic , I18n.t(:label_target_topic) , class: 'sidebar-input-label' %><br>
+  <%= select("target", "topic", options_for_select(topics, @target ? @target.topic : nil), {:include_blank => I18n.t(:topics_blank_option)} , class: 'sidebar-input-text') %><br>
     
   <%= form.hidden_field :latitude %>
   <%= form.hidden_field :longitude %>
     
-  <%= form.submit t(:btn_save_target), :class => 'sidebar-form-button' %>  
+  <%= form.submit I18n.t(:btn_save_target), :class => 'sidebar-form-button' %>  
 <% end %>

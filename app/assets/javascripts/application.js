@@ -15,4 +15,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require toastr_rails
+//= require toastr
 //= require_tree .
+
+// Toastr customizations
+toastr.options.closeButton = false;
+toastr.options.progressBar = false;
