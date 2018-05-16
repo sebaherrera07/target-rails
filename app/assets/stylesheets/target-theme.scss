@@ -1,6 +1,6 @@
 @import 'target-variables';
 
-/* GENERAL */
+// GENERAL
 body,
 html {
   font-family: $font-family-base;
@@ -17,15 +17,15 @@ html {
 }
 
 
-/* MAP */
-#map {
+// MAP
+.map {
   height: 100%;
   position: fixed;
   width: 100%;
 }
 
 
-/* SIDEBAR */
+// SIDEBAR
 .sidebar-menu-icon {
   color: $black;
   display: block;
@@ -46,14 +46,14 @@ html {
 .line {
   border: solid .5px $black;
   height: .5px;
-  margin: 30px auto 20px auto;
+  margin: 30px auto 20px;
   width: 121px;
 }
 
 .sidebar-img-circle {
   display: block;
   height: 124px;
-  margin: 20px auto 0 auto;
+  margin: 20px auto 0;
   object-fit: contain;
   width: 125px;
 }

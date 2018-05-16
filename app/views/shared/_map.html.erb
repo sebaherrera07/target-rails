@@ -1,10 +1,10 @@
-<div id="map"></div>
+<div id="map" class="map"></div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFauPb-2KMpvawQdAHogYpUvwFfmQccAw&callback=initMap" async defer></script>
 <script>
   var map;
   var marker;
-  var existingTargets = '<%= raw @targets.to_json %>';
+  var existingTargets = '<%= raw targets.to_json %>';
 
   function initMap() {
     var myLatlng = {lat: -34.9067557, lng: -56.2006151};

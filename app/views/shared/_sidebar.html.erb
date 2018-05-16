@@ -6,13 +6,13 @@
 
 <%# SIDEBAR USER %>
 <div id="sidebar_user">
-  <%= render partial: "shared/sidebar_user" %>
+  <%= render "shared/sidebar_user" %>
   <div class="line"></div>
 </div>
 
 <%# SIDEBAR CONTENT %>
 <div id="sidebar_content">
-  <%= render partial: "targets/new_target" %>
+  <%= render "targets/new_target", target: target %>
 </div>
 
 <%# SIDEBAR FOOTER %>
