@@ -25,15 +25,15 @@
     letter-spacing: 2.1px;
   }
 
-  .sidebar-logout { 
+  .sidebar-logout {
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 1.8px;
-  
+
     a {
       color: $dark-gray;
     }
-    
+
     .sidebar-edit {
       color: $bright-sky-blue;
     }
@@ -44,7 +44,7 @@
     font-weight: 600;
     letter-spacing: .7px;
   }
-  
+
   .sidebar-input-text {
     border: solid .5px $black;
     display: block;
@@ -55,7 +55,7 @@
     text-align-last: center;
     width: 70%;
   }
-  
+
   .sidebar-form-button {
     background-color: $black;
     border: solid 1px $black;
@@ -66,6 +66,6 @@
     height: 39px;
     margin: 0 auto;
     min-width: 90px;
-    width: 25%;   
+    width: 25%;
   }
 }

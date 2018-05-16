@@ -106,3 +106,5 @@ gem 'rubocop', '~> 0.55.0'
 gem 'rails_best_practices', '~> 1.19', '>= 1.19.2'
 gem 'reek', '~> 4.8', '>= 4.8.1'
 gem 'brakeman', '~> 4.3'
+gem 'scss_lint', '~> 0.57.0', require: false
+gem 'scss_lint_reporter_checkstyle', '~> 0.2.0', require: false

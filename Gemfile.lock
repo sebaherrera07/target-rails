@@ -252,6 +252,10 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    scss_lint (0.57.0)
+      rake (>= 0.9, < 13)
+      sass (~> 3.5.5)
+    scss_lint_reporter_checkstyle (0.2.0)
     selenium-webdriver (3.12.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
@@ -329,6 +333,8 @@ DEPENDENCIES
   rubocop (~> 0.55.0)
   ruby-debug-ide (~> 0.6.1)
   sass-rails (~> 5.0)
+  scss_lint (~> 0.57.0)
+  scss_lint_reporter_checkstyle (~> 0.2.0)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)

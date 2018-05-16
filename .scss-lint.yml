@@ -1,0 +1,5 @@
+linters:
+
+  Comment:
+    severity: error
+    exclude: '**/application.scss'
