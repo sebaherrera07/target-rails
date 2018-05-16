@@ -11,12 +11,9 @@
 
   <body>
     <div id="main-container" class="container-fluid container-full-size">
-      <div id="flash-alert">
-        <%= render partial: "shared/alerts" %>
-      </div>
       <div class="row container-row">
           <div id="sidebar" class="sidebar-text-wrapper col-md-3">
-            <%= render partial: "shared/sidebar" %>
+            <%= render "shared/sidebar", target: @target %>
           </div>
           <div id="content" class="col-md-9">
             <%= yield %>

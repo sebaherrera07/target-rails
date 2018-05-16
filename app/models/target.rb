@@ -16,6 +16,6 @@ class Target < ActiveRecord::Base
   validates :size, presence: true, numericality: true
 
   TOPICS = [I18n.t(:topics_sports), I18n.t(:topics_travel), I18n.t(:topics_politics),
-            I18n.t(:topics_arts), I18n.t(:topics_dating),I18n.t(:topics_music),
+            I18n.t(:topics_arts), I18n.t(:topics_dating), I18n.t(:topics_music),
             I18n.t(:topics_movies), I18n.t(:topics_series), I18n.t(:topics_food)].freeze
 end

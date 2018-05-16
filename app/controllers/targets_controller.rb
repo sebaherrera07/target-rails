@@ -21,6 +21,6 @@ class TargetsController < ApplicationController
   end
 
   def topics
-    @topics = Target::TOPICS.map { |x| [x, x] }.to_h
+    @topics = Target::TOPICS.map { |name| [name, name] }.to_h
   end
 end
