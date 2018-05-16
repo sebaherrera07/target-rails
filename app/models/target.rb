@@ -13,9 +13,44 @@
 # Class to register users targets in map
 class Target < ActiveRecord::Base
   validates :title, :topic, :latitude, :longitude, presence: true
-  validates :size, presence: true, numericality: true
+  validates :size, presence: true, numericality: true, inclusion: 100..500
 
-  TOPICS = [I18n.t(:topics_sports), I18n.t(:topics_travel), I18n.t(:topics_politics),
-            I18n.t(:topics_arts), I18n.t(:topics_dating), I18n.t(:topics_music),
-            I18n.t(:topics_movies), I18n.t(:topics_series), I18n.t(:topics_food)].freeze
+  TOPICS = [
+    {
+      title: I18n.t(:topics_sports),
+      icon: 'sports-icon.png'
+    },
+    {
+      title: I18n.t(:topics_travel),
+      icon: 'travel-icon.png'
+    },
+    {
+      title: I18n.t(:topics_politics),
+      icon: 'politics-icon.png'
+    },
+    {
+      title: I18n.t(:topics_arts),
+      icon: 'art-icon.png'
+    },
+    {
+      title: I18n.t(:topics_dating),
+      icon: 'dating-icon.png'
+    },
+    {
+      title: I18n.t(:topics_music),
+      icon: 'music-icon.png'
+    },
+    {
+      title: I18n.t(:topics_movies),
+      icon: 'movies-icon.png'
+    },
+    {
+      title: I18n.t(:topics_series),
+      icon: 'series-icon.png'
+    },
+    {
+      title: I18n.t(:topics_food),
+      icon: 'food-icon.png'
+    }
+  ].freeze
 end

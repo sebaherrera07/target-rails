@@ -14,6 +14,11 @@ class TargetsController < ApplicationController
     end
   end
 
+  def topic_icon
+    target = Target::TOPICS.detect { |tar| tar[:title] == params[:topic] }
+    render json: { icon: target[:icon] }, status: 200
+  end
+
   private
 
   def target_params
@@ -21,6 +26,6 @@ class TargetsController < ApplicationController
   end
 
   def topics
-    @topics = Target::TOPICS.map { |name| [name, name] }.to_h
+    @topics = Target::TOPICS.map { |topic| [topic[:title], topic[:title]] }.to_h
   end
 end

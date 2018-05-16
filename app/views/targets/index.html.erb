@@ -17,11 +17,8 @@
 
     function addTargetInMap(target){
       var pos = { lat: parseFloat(target.latitude), lng: parseFloat(target.longitude) };
-      var mark = new google.maps.Marker({
-        position: pos,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
-        map: map
-      });
+      addTargetCircle(pos, target.size);
+      addTargetTopic(pos, target.topic);
     }
 
     function showErrorAlert(event) {
