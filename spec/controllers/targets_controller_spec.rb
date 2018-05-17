@@ -74,4 +74,18 @@ RSpec.describe TargetsController do
       expect(assigns(:targets)).to eq(targets)
     end
   end
+
+  describe 'GET topic_icon' do
+    it 'returns correct icon for Sports' do
+      get :topic_icon, params: { topic: I18n.t(:topics_sports) }, as: :json
+      icon_json = JSON.parse(response.body)
+      expect(icon_json['icon']).to eq('sports-icon.png')
+    end
+
+    it 'returns correct icon for Movies' do
+      get :topic_icon, params: { topic: I18n.t(:topics_movies) }, as: :json
+      icon_json = JSON.parse(response.body)
+      expect(icon_json['icon']).to eq('movies-icon.png')
+    end
+  end
 end

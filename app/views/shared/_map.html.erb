@@ -24,29 +24,30 @@
     loadExistingTargets();
   }
 
-  function hideSelectedMarker(){
-    if(marker){
+  function hideSelectedMarker() {
+    if (marker) {
       marker.setMap(null);
     }
   }
 
   function placeMarkerAndPanTo(latLng, map) {
     hideSelectedMarker();
+    var iconUrl = '<%= Rails.application.config.app_icons_base_url %>current-marker.png';
     marker = new google.maps.Marker({
       position: latLng,
       animation: google.maps.Animation.DROP,
-      icon: 'http://localhost:3000/assets/current-marker.png',
+      icon: iconUrl,
       map: map
     });
     map.panTo(latLng);
   }
 
-  function loadFormLatLng(latLng){
+  function loadFormLatLng(latLng) {
     document.getElementById('target_latitude').value = latLng.lat().toFixed(15);
     document.getElementById('target_longitude').value = latLng.lng().toFixed(15);
   }
 
-  function loadExistingTargets(){
+  function loadExistingTargets() {
     var targetList = JSON.parse(existingTargets);
     for (var i = 0; i < targetList.length; i++) {
       var target = targetList[i];
@@ -56,7 +57,7 @@
     }
   }
 
-  function addTargetCircle(pos, size){
+  function addTargetCircle(pos, size) {
     var circle = new google.maps.Circle({
         strokeColor: '#efc537',
         strokeOpacity: 0.8,
@@ -69,17 +70,17 @@
       });
   }
 
-  function addTargetTopic(pos, topic){
+  function addTargetTopic(pos, topic) {
     var iconUrl;
     $.ajax({
         dataType: "json",
         async: false,
         url: "targets/topic_icon?topic=" + topic,
         success: function(data){
-          iconUrl = 'http://localhost:3000/assets/' + data.icon;
+          iconUrl = '<%= Rails.application.config.app_icons_base_url %>' + data.icon;
         }
     });
-    if(iconUrl){
+    if (iconUrl) {
       var icon = {
         url: iconUrl,
         scaledSize: new google.maps.Size(25, 25),
