@@ -21,40 +21,76 @@
       loadFormLatLng(e.latLng);
     });
 
-    loadExistingTargets(map);
+    loadExistingTargets();
   }
 
-  function hideSelectedMarker(){
-    if(marker){
+  function hideSelectedMarker() {
+    if (marker) {
       marker.setMap(null);
     }
   }
 
   function placeMarkerAndPanTo(latLng, map) {
     hideSelectedMarker();
+    var iconUrl = '<%= Rails.application.config.app_icons_base_url %>current-marker.png';
     marker = new google.maps.Marker({
       position: latLng,
       animation: google.maps.Animation.DROP,
-      icon: 'http://maps.google.com/mapfiles/ms/icons/arrow.png',
+      icon: iconUrl,
       map: map
     });
     map.panTo(latLng);
   }
 
-  function loadFormLatLng(latLng){
+  function loadFormLatLng(latLng) {
     document.getElementById('target_latitude').value = latLng.lat().toFixed(15);
     document.getElementById('target_longitude').value = latLng.lng().toFixed(15);
   }
 
-  function loadExistingTargets(map){
+  function loadExistingTargets() {
     var targetList = JSON.parse(existingTargets);
     for (var i = 0; i < targetList.length; i++) {
       var target = targetList[i];
       var pos = { lat: parseFloat(target.latitude), lng: parseFloat(target.longitude) };
-      var mark = new google.maps.Marker({
+      addTargetCircle(pos, target.size);
+      addTargetTopic(pos, target.topic);
+    }
+  }
+
+  function addTargetCircle(pos, size) {
+    var circle = new google.maps.Circle({
+        strokeColor: '#efc537',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#efc537',
+        fillOpacity: 0.35,
+        map: map,
+        center: pos,
+        radius: size
+      });
+  }
+
+  function addTargetTopic(pos, topic) {
+    var iconUrl;
+    $.ajax({
+        dataType: "json",
+        async: false,
+        url: "targets/topic_icon?topic=" + topic,
+        success: function(data){
+          iconUrl = '<%= Rails.application.config.app_icons_base_url %>' + data.icon;
+        }
+    });
+    if (iconUrl) {
+      var icon = {
+        url: iconUrl,
+        scaledSize: new google.maps.Size(25, 25),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(13, 13)
+      };
+      var topicIcon = new google.maps.Marker({
+        map: map,
         position: pos,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
-        map: map
+        icon: icon,
       });
     }
   }
