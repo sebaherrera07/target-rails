@@ -60,4 +60,16 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.app_icons_base_url = 'http://localhost:3000/assets/'
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default charset: 'utf-8'
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    enable_starttls_auto: true,
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'rootstrap.com',
+    authentication: :login,
+    user_name: 'sebastian@rootstrap.com',
+    password: 's3Ba0207'
+  }
 end

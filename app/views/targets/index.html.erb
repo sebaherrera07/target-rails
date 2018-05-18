@@ -1,4 +1,9 @@
-<%= render "shared/map", targets: @targets %>
+<div id="sidebar" class="text-wrapper col-md-3">
+  <%= render "shared/sidebar", target: @target %>
+</div>
+<div id="content" class="col-md-9">
+  <%= render "shared/map", targets: @targets %>
+</div>
 
 <script>
   $(document).ready(function() {

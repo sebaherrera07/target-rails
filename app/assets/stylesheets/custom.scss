@@ -13,3 +13,12 @@
 }
 
 .container-row { height: inherit; }
+
+#custom-alert {
+  float: right;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 20%;
+  z-index: 1;
+}

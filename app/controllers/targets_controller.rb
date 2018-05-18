@@ -1,5 +1,6 @@
 class TargetsController < ApplicationController
   helper_method :topics
+  before_action :authenticate_user!
 
   def index
     @targets = Target.all

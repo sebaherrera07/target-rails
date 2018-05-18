@@ -35,12 +35,20 @@ html {
   width: 20.3px;
 }
 
-.smilies {
+.smilies-bottom {
   bottom: 20px;
   display: block;
   left: 43%;
   object-fit: contain;
   position: absolute;
+}
+
+.smilies-main {
+  display: block;
+  left: 42%;
+  object-fit: contain;
+  position: absolute;
+  top: 50px;
 }
 
 .line {
@@ -56,4 +64,23 @@ html {
   margin: 20px auto 0;
   object-fit: contain;
   width: 125px;
+}
+
+
+// USER FORMS
+.user-form-errors {
+  margin: 0 auto;
+  width: 75%;
+}
+
+
+// STATIC SIDE
+.static-side {
+  background-color: $bright-sky-blue;
+}
+
+.static-phone {
+  display: block;
+  margin: 0 auto;
+  margin-top: 16%;
 }

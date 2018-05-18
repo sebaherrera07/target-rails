@@ -1,0 +1,23 @@
+<div id="content" class="text-wrapper col-md-6">
+  <%= image_tag("smilies.png", class: "smilies-main", size: "133x78") %>
+  <h1 class="user-form-title"><%=I18n.t(:title_confirmation)%></h1>
+  <h2 class="user-form-subtitle"><%=I18n.t(:subtitle_confirmation)%></h2>
+  <p class="user-form-paragraph"><%=I18n.t(:paragraph_confirmation)%></p>
+
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render 'users/shared/error_messages', object: resource %>
+
+    <%= f.label :email, I18n.t(:label_user_email), class: 'user-form-input-label' %><br />
+    <%= f.email_field :email, autocomplete: 'email', class: 'user-form-input-text', value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+
+    <%= f.submit I18n.t(:btn_resend_confirmation), class: 'user-form-form-button' %>
+
+    <div class="line"></div>
+    <%= link_to I18n.t(:btn_sign_in), new_session_path(resource_name), class: 'user-form-link' %><br />
+    <%= link_to I18n.t(:btn_sign_up), new_registration_path(resource_name), class: 'user-form-link' %><br />
+  <% end %>
+</div>
+
+<div class="static-side col-md-6">
+  <%= render "shared/static_side"%>
+</div>

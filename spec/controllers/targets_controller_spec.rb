@@ -5,6 +5,7 @@ RSpec.describe TargetsController do
     let(:params) { { target: attributes_for(:target) } }
 
     before(:each) do
+      sign_in
       post :create, params: params, as: :json
     end
 
@@ -69,6 +70,7 @@ RSpec.describe TargetsController do
 
   describe 'GET index' do
     it 'assigns @targets' do
+      sign_in
       targets = Target.all
       get :index
       expect(assigns(:targets)).to eq(targets)

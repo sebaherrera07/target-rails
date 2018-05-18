@@ -35,10 +35,29 @@ en:
   logout: "Logout"
   
   # Titles
+  title_target: "TARGET"
   title_create_new_target: "CREATE NEW TARGET"
+  title_sign_up: "SIGN UP"
+  title_reset_password: "RESET PASSWORD"
+  title_change_password: "CHANGE YOUR PASSWORD"
+  title_confirmation: "¡ACCOUNT CREATED!"
+
+  # Subtitles
+  subtitle_find_people: "Find people near you & Connect"
+  subtitle_confirmation: "Only one more step to start enjoying"
+
+  # Paragraphs
+  paragraph_intro: "Create a target wherever on the map, specify your interest: Travel, Dating, Music, etc and start conecting with others who share your interest."
+  paragraph_confirmation: "We’ve sent an email to confirm your account. Please check your inbox."
 
   # Buttons
   btn_save_target: "SAVE TARGET"
+  btn_sign_up: "SIGN UP"
+  btn_sign_in: "SIGN IN"
+  btn_forgot_password: "Forgot your password?"
+  btn_reset_password: "RESET PASSWORD"
+  btn_change_password: "CHANGE PASSWORD"
+  btn_resend_confirmation: "RESEND CONFIRMATION"
 
   # Alerts
   alert_success_target_created: "Target created!"
@@ -49,6 +68,11 @@ en:
   label_target_title: "Title"
   label_target_size: "Area Length (in metres)"
   label_target_topic: "Select a Topic"
+  label_user_name: "NAME"
+  label_user_email: "EMAIL"
+  label_user_password: "PASSWORD"
+  label_user_new_password: "NEW PASSWORD"
+  label_user_confirm_password: "CONFIRM PASSWORD"
 
   # Topics options
   topics_blank_option: "What do you want to talk about?"
@@ -66,3 +90,5 @@ en:
   maps_location_found: "You are here."
   maps_location_failed: "Error: The Geolocation service failed."
   maps_location_browser_not_supported: "Error: Your browser doesn't support geolocation."
+
+
