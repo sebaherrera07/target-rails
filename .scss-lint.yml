@@ -3,3 +3,7 @@ linters:
   Comment:
     severity: error
     exclude: '**/application.scss'
+  
+  IdSelector:
+    exclude: '**/custom.scss'
+  

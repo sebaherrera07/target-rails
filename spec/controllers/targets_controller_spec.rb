@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe TargetsController do
+  let(:user) { attributes_for(:user) }
+
   describe 'POST create' do
     let(:params) { { target: attributes_for(:target) } }
 
     before(:each) do
-      sign_in
+      sign_in(user)
       post :create, params: params, as: :json
     end
 
@@ -70,7 +72,7 @@ RSpec.describe TargetsController do
 
   describe 'GET index' do
     it 'assigns @targets' do
-      sign_in
+      sign_in(user)
       targets = Target.all
       get :index
       expect(assigns(:targets)).to eq(targets)
@@ -78,6 +80,10 @@ RSpec.describe TargetsController do
   end
 
   describe 'GET topic_icon' do
+    before(:each) do
+      sign_in(user)
+    end
+
     it 'returns correct icon for Sports' do
       get :topic_icon, params: { topic: I18n.t(:topics_sports) }, as: :json
       icon_json = JSON.parse(response.body)

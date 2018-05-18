@@ -54,3 +54,6 @@ config/database.yml
 
 # Ignore tests generated file
 spec/examples.txt
+
+# Ignore environment variables
+config/application.yml
