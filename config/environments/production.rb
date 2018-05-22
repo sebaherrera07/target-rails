@@ -89,4 +89,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.app_icons_base_url = 'https://target-rails.herokuapp.com/assets/'
 end
