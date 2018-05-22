@@ -5,15 +5,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div id="main-container" class="container-fluid container-full-size">
-      <div id="flash-alert">
-        <%= render partial: "shared/alerts" %>
-      </div>
+      <%= render partial: "shared/alerts" %>
       <div class="row container-row">
         <%= yield %>
       </div>

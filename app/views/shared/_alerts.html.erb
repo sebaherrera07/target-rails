@@ -1,6 +1,8 @@
-<% flash.each do |key, value| %>
-  <div id="custom-alert" class="<%= flash_class(key) %>  alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <%= value %>
-  </div>
+<% unless flash.empty? %>
+  <script type="text/javascript">
+    <% flash.each do |f| %>
+      <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+      toastr['<%= type %>']('<%= f[1] %>');
+    <% end %>
+  </script>
 <% end %>

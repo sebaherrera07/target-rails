@@ -40,7 +40,7 @@ RSpec.describe TargetsController do
       end
 
       it 'returns http error code' do
-        expect(response).to have_http_status(422)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it 'returns the errors as json' do
@@ -59,7 +59,7 @@ RSpec.describe TargetsController do
       end
 
       it 'returns http error code' do
-        expect(response).to have_http_status(422)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it 'returns the errors as json' do
