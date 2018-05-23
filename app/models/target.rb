@@ -13,7 +13,8 @@
 # Class to register users targets in map
 class Target < ActiveRecord::Base
   validates :title, :topic, :latitude, :longitude, presence: true
-  validates :size, presence: true, numericality: true, inclusion: 100..500
+  validates :size, presence: true,
+                   numericality: { greater_than_or_equal_to: 50, less_than_or_equal_to: 500 }
 
   TOPICS = [
     {
