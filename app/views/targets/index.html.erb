@@ -23,10 +23,14 @@
 
     function showErrorAlert(event) {
       var errors = event.detail[0]['errors'];
-      if (errors.latitude){
+      if (errors.latitude) {
         toastr.warning('<%=I18n.t(:alert_error_target_not_set)%>');
       } else {
-        toastr.warning('<%=I18n.t(:alert_error_target_data_incomplete)%>');
+        if (errors.size) {
+          toastr.warning('<%=I18n.t(:alert_error_target_size_invalid)%>');
+        } else {
+          toastr.warning('<%=I18n.t(:alert_error_target_data_incomplete)%>');
+        }
       }
     }
   });

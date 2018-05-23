@@ -44,6 +44,7 @@ en:
   alert_success_target_created: "Target created!"
   alert_error_target_not_set: "Target not set on the map."
   alert_error_target_data_incomplete: "Target data incomplete."
+  alert_error_target_size_invalid: "Target size should be a number between 50 and 500."
 
   # Labels
   label_target_title: "Title"

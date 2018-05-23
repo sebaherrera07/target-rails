@@ -28,6 +28,8 @@
     if (marker) {
       marker.setMap(null);
     }
+    document.getElementById('target_latitude').value = null;
+    document.getElementById('target_longitude').value = null;
   }
 
   function placeMarkerAndPanTo(latLng, map) {
