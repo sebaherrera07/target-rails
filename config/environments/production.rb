@@ -90,8 +90,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.app_icons_base_url = 'https://target-rails.herokuapp.com/assets/'
-  config.action_mailer.default_url_options = { host: 'target-rails.herokuapp.com', port: 443 }
+  config.app_icons_base_url = ENV['ICONS_BASE_URL']
+  config.action_mailer.default_url_options = { host: ENV['MAILER_HOST'], protocol: 'https' }
   config.action_mailer.default charset: 'utf-8'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
