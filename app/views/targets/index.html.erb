@@ -30,12 +30,12 @@
       var errors = event.detail[0]['errors'];
       if (errors.latitude) {
         toastr.warning('<%=I18n.t(:alert_error_target_not_set)%>');
-      } else {
-        if (errors.size) {
+      } else if (errors.user_limit) {
+        toastr.warning('<%=I18n.t(:alert_error_target_limit, limit: Target::LIMIT)%>');
+      } else if (errors.size) {
           toastr.warning('<%=I18n.t(:alert_error_target_size_invalid)%>');
-        } else {
-          toastr.warning('<%=I18n.t(:alert_error_target_data_incomplete)%>');
-        }
+      } else {
+        toastr.warning('<%=I18n.t(:alert_error_target_data_incomplete)%>');
       }
     }
   });
