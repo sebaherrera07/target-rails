@@ -59,8 +59,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.app_icons_base_url = 'http://localhost:3000/assets/'
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.app_icons_base_url = ENV['ICONS_BASE_URL']
+  config.action_mailer.default_url_options = { host: ENV['MAILER_HOST'] }
   config.action_mailer.default charset: 'utf-8'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
