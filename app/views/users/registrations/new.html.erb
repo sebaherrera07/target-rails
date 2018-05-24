@@ -1,0 +1,29 @@
+<div id="content" class="text-wrapper col-md-6">
+  <%= image_tag("smilies.png", class: "smilies-main", size: "133x78") %>
+  <h1 class="user-form-title"><%=I18n.t(:title_sign_up)%></h1>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render 'users/shared/error_messages', object: resource %>
+
+    <%= f.label :name, I18n.t(:label_user_name), class: 'user-form-input-label' %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "off", class: 'user-form-input-text' %>
+
+    <%= f.label :email, I18n.t(:label_user_email), class: 'user-form-input-label' %><br />
+    <%= f.email_field :email, autocomplete: 'email', class: 'user-form-input-text' %>
+
+    <%= f.label :password, I18n.t(:label_user_password), class: 'user-form-input-label' %>
+    <%= f.password_field :password, autocomplete: "off", class: 'user-form-input-text', placeholder: "MIN. #{@minimum_password_length} CHARACTERS LONG" %>
+
+    <%= f.label :password_confirmation, I18n.t(:label_user_confirm_password), class: 'user-form-input-label' %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'user-form-input-text' %>
+
+    <%= f.submit I18n.t(:btn_sign_up), class: 'user-form-form-button' %>
+
+    <div class="line"></div>
+    <%= link_to I18n.t(:btn_sign_in), new_session_path(resource_name), class: 'user-form-link' %><br />
+  <% end %>
+</div>
+
+<div class="static-side col-md-6">
+  <%= render "shared/static_side"%>
+</div>

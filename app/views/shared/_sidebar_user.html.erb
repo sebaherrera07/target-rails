@@ -1,4 +1,8 @@
 <%= image_tag("user-default-avatar.png", class: "sidebar-img-circle") %>
 
-<h3 class="sidebar-username">username</h3>
-<h3 class="sidebar-logout"><a href="#" class="sidebar-edit"><%=I18n.t(:edit)%></a> / <a href="#"><%=I18n.t(:logout)%></a> </h3>
+<h3 class="sidebar-username"><%= current_user.name %></h3>
+
+<h3 class="sidebar-logout">
+  <a href="#" class="sidebar-edit"><%=I18n.t(:edit)%></a> /
+  <%= link_to I18n.t(:logout), destroy_user_session_path, method: :delete %>
+</h3>

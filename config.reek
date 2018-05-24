@@ -9,7 +9,7 @@ ClassVariable:
   exclude: []
 ControlParameter:
   enabled: true
-  exclude: []
+  exclude: [ApplicationHelper#flash_class]
 DataClump:
   enabled: true
   exclude: []
