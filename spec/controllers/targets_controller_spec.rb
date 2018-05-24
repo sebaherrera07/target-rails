@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TargetsController do
-  let(:user) { attributes_for(:user) }
+  let(:user) { create(:user) }
 
   describe 'POST create' do
     let(:params) { { target: attributes_for(:target) } }
@@ -68,12 +68,52 @@ RSpec.describe TargetsController do
         expect(errors_json['errors']['longitude'].length).to be_present
       end
     end
+
+    context 'when invalid size' do
+      let(:params) { { target: attributes_for(:target, size: 999) } }
+
+      it 'does not create a target' do
+        expect do
+          post :create, params: params, as: :json
+        end.not_to change(Target, :count)
+      end
+
+      it 'returns http error code' do
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+
+      it 'returns the errors as json' do
+        errors_json = JSON.parse(response.body)
+        expect(errors_json['errors']['size']).to be_present
+      end
+    end
+
+    context 'when reached targets limit' do
+      let(:user) { create(:user_with_targets, targets_count: Target::LIMIT) }
+
+      it 'does not create a target' do
+        expect do
+          post :create, params: params, as: :json
+        end.not_to change(Target, :count)
+      end
+
+      it 'returns http error code' do
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+
+      it 'returns the errors as json' do
+        errors_json = JSON.parse(response.body)
+        expect(errors_json['errors']['user_limit']).to be_present
+      end
+    end
   end
 
   describe 'GET index' do
-    it 'assigns @targets' do
+    let(:user) { create(:user_with_targets) }
+
+    it 'assigns @targets as the user targets' do
       sign_in(user)
-      targets = Target.all
+      targets = user.targets
       get :index
       expect(assigns(:targets)).to eq(targets)
     end

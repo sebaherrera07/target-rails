@@ -64,6 +64,7 @@ en:
   alert_error_target_not_set: "Target not set on the map."
   alert_error_target_data_incomplete: "Target data incomplete."
   alert_error_target_size_invalid: "Target size should be a number between 50 and 500."
+  alert_error_target_limit: "You´ve reached the limit of %{limit} targets. Delete a target before creating another one."
 
   # Labels
   label_target_title: "Title"

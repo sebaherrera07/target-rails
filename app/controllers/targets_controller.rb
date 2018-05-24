@@ -3,11 +3,12 @@ class TargetsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @targets = Target.all
+    @targets = current_user.targets
   end
 
   def create
     @target = Target.new(target_params)
+    @target.user = current_user
     if @target.save
       render json: { target: @target }, status: :ok
     else

@@ -5,5 +5,6 @@ FactoryBot.define do
     latitude  { Faker::Number.decimal(2, 15) }
     longitude { Faker::Number.decimal(2, 15) }
     size      { Random.rand(100..500) }
+    user
   end
 end
