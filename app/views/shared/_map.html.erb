@@ -3,15 +3,17 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFauPb-2KMpvawQdAHogYpUvwFfmQccAw&callback=initMap" async defer></script>
 <script>
   var map;
-  var marker;
+  var currentMarker;
+  var clickedMarker;
   var existingTargets = '<%= raw targets.to_json %>';
+  var circlesDictonary = {};
 
   function initMap() {
-    var myLatlng = { lat: -34.9067557, lng: -56.2006151 };
+    var myLatlng = { lat: -34.8956766, lng: -56.1665157 };
 
     map = new google.maps.Map(document.getElementById('map'), {
       center: myLatlng,
-      zoom: 16
+      zoom: 14
     });
 
     showCurrentLocation();
@@ -25,8 +27,8 @@
   }
 
   function hideSelectedMarker() {
-    if (marker) {
-      marker.setMap(null);
+    if (currentMarker) {
+      currentMarker.setMap(null);
     }
     document.getElementById('target_latitude').value = null;
     document.getElementById('target_longitude').value = null;
@@ -35,7 +37,7 @@
   function placeMarkerAndPanTo(latLng, map) {
     hideSelectedMarker();
     var iconUrl = '<%= Rails.application.config.app_icons_base_url %>current-marker.png';
-    marker = new google.maps.Marker({
+    currentMarker = new google.maps.Marker({
       position: latLng,
       animation: google.maps.Animation.DROP,
       icon: iconUrl,
@@ -54,47 +56,70 @@
     for (var i = 0; i < targetList.length; i++) {
       var target = targetList[i];
       var pos = { lat: parseFloat(target.latitude), lng: parseFloat(target.longitude) };
-      addTargetCircle(pos, target.size);
-      addTargetTopic(pos, target.topic);
+      addTargetCircle(target);
+      addTargetMarker(target);
     }
   }
 
-  function addTargetCircle(pos, size) {
+  function addTargetCircle(target) {
+    var pos = { lat: parseFloat(target.latitude), lng: parseFloat(target.longitude) };
     var circle = new google.maps.Circle({
-        strokeColor: '#efc537',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#efc537',
-        fillOpacity: 0.35,
-        map: map,
-        center: pos,
-        radius: size
-      });
+      strokeColor: '#efc537',
+      strokeOpacity: .8,
+      strokeWeight: 2,
+      fillColor: '#efc537',
+      fillOpacity: .35,
+      map: map,
+      center: pos,
+      radius: target.size,
+      targetId: target.id
+    });
+    circlesDictonary[target.id] = circle;
   }
 
-  function addTargetTopic(pos, topic) {
-    var iconUrl;
-    $.ajax({
-        dataType: "json",
-        async: false,
-        url: "targets/topic_icon?topic=" + topic,
-        success: function(data){
-          iconUrl = '<%= Rails.application.config.app_icons_base_url %>' + data.icon;
-        }
-    });
+  function addTargetMarker(target) {
+    var pos = { lat: parseFloat(target.latitude), lng: parseFloat(target.longitude) };
+    var iconUrl = getIconUrl(target.topic);
     if (iconUrl) {
-      var icon = {
-        url: iconUrl,
-        scaledSize: new google.maps.Size(25, 25),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(13, 13)
-      };
-      var topicIcon = new google.maps.Marker({
+      var icon = generateIconObject(iconUrl);
+      var marker = new google.maps.Marker({
         map: map,
         position: pos,
         icon: icon,
+        targetId: target.id,
+        targetTitle: target.title,
+        targetSize: target.size,
+        targetTopic: target.topic
+      });
+      google.maps.event.addListener(marker, 'click', function () {
+        clickedMarker = this;
+        fillTargetModalData(clickedMarker)
+        $('#targetModal').modal('toggle');
       });
     }
+  }
+
+  function getIconUrl(topic) {
+    var iconUrl;
+    $.ajax({
+      dataType: 'json',
+      async: false,
+      url: 'targets/topic_icon?topic=' + topic,
+      success: function(data) {
+        iconUrl = '<%= Rails.application.config.app_icons_base_url %>' + data.icon;
+      }
+    });
+    return iconUrl;
+  }
+
+  function generateIconObject(iconUrl) {
+    var icon = {
+      url: iconUrl,
+      scaledSize: new google.maps.Size(25, 25),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(13, 13)
+    };
+    return icon;
   }
 
   function showCurrentLocation() {
@@ -111,5 +136,27 @@
         map.setCenter(pos);
       });
     }
+  }
+
+  function fillTargetModalData(clickedMarker) {
+    $('#targetTitle').text(clickedMarker.targetTitle);
+    $('#targetTopic').text(clickedMarker.targetTopic);
+    $('#targetSize').text(clickedMarker.targetSize);
+  }
+
+  function deleteTarget() {
+    $.ajax({
+      dataType: 'json',
+      async: false,
+      method: 'delete',
+      url: 'targets/' + clickedMarker.targetId,
+      success: function(data) {
+        toastr.success('<%=I18n.t(:alert_success_target_deleted)%>');
+        circlesDictonary[clickedMarker.targetId].setMap(null);
+        clickedMarker.setMap(null);
+        clickedMarker = null;
+        $('#targetModal').modal('toggle');
+      }
+    });
   }
 </script>

@@ -71,6 +71,7 @@
     width: 25%;
   }
 
+
   // USER FORMS
   .user-form-title {
     font-size: 20px;
@@ -128,5 +129,41 @@
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 1.7px;
+  }
+
+
+  // MODALS
+  .modal-button {
+    background-color: $black;
+    border: solid 1px $black;
+    box-shadow: 0 2px 4px 0 $shadow;
+    color: $white;
+    display: block;
+    font-size: 11px;
+    height: 39px;
+    margin: 0 auto 10px;
+    min-width: 70px;
+    width: 20%;
+
+    &.primary {
+      background-color: $black;
+    }
+
+    &.secondary {
+      background-color: $dark-gray;
+    }
+
+    &.warning {
+      background-color: $red-warning;
+    }
+  }
+
+  .details-concept {
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .details-value {
+    text-align: left;
   }
 }

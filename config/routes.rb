@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     post  '/users',         to: 'users/registrations#create', as: nil
   end
 
-  resources :targets, only: %i[index create] do
+  resources :targets, only: %i[index create destroy] do
     get :topic_icon, on: :collection
   end
 end

@@ -136,4 +136,23 @@ RSpec.describe TargetsController do
       expect(icon_json['icon']).to eq('movies-icon.png')
     end
   end
+
+  describe 'DELETE destroy' do
+    let(:target) { create(:target) }
+
+    before(:each) do
+      sign_in(target.user)
+    end
+
+    it 'deletes a target' do
+      expect do
+        delete :destroy, params: { id: target.id }, as: :json
+      end.to change(Target, :count).by(-1)
+    end
+
+    it 'returns success' do
+      delete :destroy, params: { id: target.id }, as: :json
+      expect(response).to be_successful
+    end
+  end
 end
