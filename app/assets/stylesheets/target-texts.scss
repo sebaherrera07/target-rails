@@ -7,7 +7,10 @@
   line-height: normal;
   text-align: center;
 
-  // SIDEBAR
+
+  //------------------------------------
+  // # SIDEBAR
+  //------------------------------------
   .sidebar-title {
     font-size: 20px;
     font-weight: bold;
@@ -66,19 +69,21 @@
     display: block;
     font-size: 11px;
     height: 39px;
-    margin: 0 auto 60px;
+    margin: 0 auto 130px;
     min-width: 90px;
     width: 25%;
   }
 
 
-  // USER FORMS
+  //------------------------------------
+  // # USER FORMS
+  //------------------------------------
   .user-form-title {
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 2px;
     margin-bottom: 30px;
-    margin-top: 140px;
+    margin-top: 80px;
   }
 
   .user-form-subtitle {
@@ -132,7 +137,9 @@
   }
 
 
-  // MODALS
+  //------------------------------------
+  // # MODALS
+  //------------------------------------
   .modal-button {
     background-color: $black;
     border: solid 1px $black;

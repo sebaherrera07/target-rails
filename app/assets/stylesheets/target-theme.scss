@@ -1,6 +1,8 @@
 @import 'target-variables';
 
-// GENERAL
+//------------------------------------
+// # GENERAL
+//------------------------------------
 body,
 html {
   font-family: $font-family-base;
@@ -17,15 +19,19 @@ html {
 }
 
 
-// MAP
+//------------------------------------
+// # MAP
+//------------------------------------
 .map {
   height: 100%;
-  position: fixed;
+  min-height: 500px;
   width: 100%;
 }
 
 
-// SIDEBAR
+//------------------------------------
+// # SIDEBAR
+//------------------------------------
 .sidebar-menu-icon {
   color: $black;
   display: block;
@@ -36,18 +42,16 @@ html {
 }
 
 .smilies-bottom {
-  bottom: 20px;
-  display: block;
-  left: 43%;
+  display: flex;
+  margin: 0 auto 20px;
   object-fit: contain;
-  position: absolute;
+  position: inherit;
 }
 
 .smilies-main {
-  display: block;
-  left: 42%;
+  margin: 0 auto;
   object-fit: contain;
-  position: absolute;
+  position: relative;
   top: 50px;
 }
 
@@ -67,14 +71,18 @@ html {
 }
 
 
-// USER FORMS
+//------------------------------------
+// # USER FORMS
+//------------------------------------
 .user-form-errors {
   margin: 0 auto;
   width: 75%;
 }
 
 
-// STATIC SIDE
+//------------------------------------
+// # STATIC SIDE
+//------------------------------------
 .static-side {
   background-color: $bright-sky-blue;
 }
