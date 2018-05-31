@@ -1,5 +1,5 @@
 <div id="sidebar" class="text-wrapper col-md-3">
-  <%= render "shared/sidebar", target: @target %>
+  <%= render "shared/sidebar", target: @target, compatibles: @compatibles %>
 </div>
 <div id="content" class="col-md-9">
   <%= render "shared/map", targets: @targets %>
@@ -20,6 +20,7 @@
       hideSelectedMarker();
       addTargetCircle(target);
       addTargetMarker(target);
+      showTargetMatchesSection();
     }
 
     function showErrorAlert(event) {

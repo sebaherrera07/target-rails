@@ -109,3 +109,6 @@ gem 'scss_lint_reporter_checkstyle', '~> 0.2.0', require: false
 
 # Devise (user auth)
 gem 'devise', '~> 4.4', '>= 4.4.3'
+
+# Geokit (for locations distances)
+gem 'geokit-rails', '~> 2.3', '>= 2.3.1'

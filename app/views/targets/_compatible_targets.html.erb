@@ -1,0 +1,21 @@
+<h4 class="sidebar-subtitle"><%=I18n.t(:title_compatible_targets)%></h4>
+<% if compatibles.any? %>
+  <table class="table">
+    <tbody>
+      <% compatibles.each do |target| %>
+        <tr>
+          <td>
+            <span class="sidebar-compatibles title"><%= target.title %></span><br>
+            <span class="sidebar-compatibles">
+              <%= image_tag("user-default-avatar.png", size: "20x20") %> <%= target.user_name %>
+            </span>
+          </td>
+          <td><%= image_tag(get_topic_icon(target.topic), size: "24x24") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <br>
+  <h4 class="sidebar-subtitle"><%=I18n.t(:paragraph_no_compatible_targets)%></h4>
+<% end %>

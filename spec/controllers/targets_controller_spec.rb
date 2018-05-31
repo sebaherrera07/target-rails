@@ -111,11 +111,19 @@ RSpec.describe TargetsController do
   describe 'GET index' do
     let(:user) { create(:user_with_targets) }
 
-    it 'assigns @targets as the user targets' do
+    before(:each) do
       sign_in(user)
-      targets = user.targets
+    end
+
+    it 'assigns @targets as the user targets' do
       get :index
-      expect(assigns(:targets)).to eq(targets)
+      expect(assigns(:targets)).to eq(user.targets)
+    end
+
+    it 'assigns @compatibles as the user targets matches' do
+      compatibles = TargetMatcherService.matches_for_all_targets(user.targets)
+      get :index
+      expect(assigns(:compatibles)).to eq(compatibles)
     end
   end
 

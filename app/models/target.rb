@@ -13,13 +13,9 @@
 
 # Class to register users targets in map
 class Target < ActiveRecord::Base
-  belongs_to :user
-
-  validates :title, :topic, :latitude, :longitude, presence: true
-  validates :size, presence: true,
-                   numericality: { greater_than_or_equal_to: 50, less_than_or_equal_to: 500 }
-  validate :validate_targets_limit
-
+  MIN_SIZE = 50
+  MAX_SIZE = 500
+  LIMIT = 5
   TOPICS = [
     { title: I18n.t(:topics_sports),    icon: 'sports-icon.png' },
     { title: I18n.t(:topics_travel),    icon: 'travel-icon.png' },
@@ -32,7 +28,24 @@ class Target < ActiveRecord::Base
     { title: I18n.t(:topics_food),      icon: 'food-icon.png' }
   ].freeze
 
-  LIMIT = 5
+  belongs_to :user
+  delegate :name, to: :user, prefix: true
+
+  validates :title, :topic, :latitude, :longitude, presence: true
+  validates :size,
+            presence: true,
+            numericality: { greater_than_or_equal_to: MIN_SIZE, less_than_or_equal_to: MAX_SIZE }
+  validate :validate_targets_limit
+
+  acts_as_mappable default_units:       :meters,
+                   default_formula:     :flat,
+                   distance_field_name: :distance,
+                   lat_column_name:     :latitude,
+                   lng_column_name:     :longitude
+
+  def compatible_targets
+    TargetMatcherService.matches_for(self)
+  end
 
   private
 
