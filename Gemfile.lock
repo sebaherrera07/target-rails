@@ -51,7 +51,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (8.5.1)
+    autoprefixer-rails (8.5.2)
       execjs
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
