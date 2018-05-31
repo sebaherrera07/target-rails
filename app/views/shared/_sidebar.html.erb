@@ -11,8 +11,13 @@
 </div>
 
 <%# SIDEBAR CONTENT %>
-<div id="sidebar_content">
-  <%= render "targets/new_target", target: target %>
+<div id="sidebar_content" class="sidebar-content">
+  <div id="sidebar_compatible_targets">
+    <%= render "targets/compatible_targets", compatibles: compatibles %>
+  </div>
+  <div id="sidebar_new_target" class="hidden">
+    <%= render "targets/new_target", target: target %>
+  </div>
 </div>
 
 <%# SIDEBAR FOOTER %>

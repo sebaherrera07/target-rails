@@ -22,7 +22,7 @@ DuplicateMethodCall:
   allow_calls: []
 FeatureEnvy:
   enabled: true
-  exclude: [TargetsController#topics]
+  exclude: [TargetsController#topics, TargetMatcherService#matches_for]
 InstanceVariableAssumption:
   enabled: false
 IrresponsibleModule:

@@ -13,5 +13,6 @@
   <%= form.hidden_field :latitude %>
   <%= form.hidden_field :longitude %>
 
-  <%= form.submit I18n.t(:btn_save_target), class: 'sidebar-form-button' %>
+  <%= button_tag I18n.t(:btn_cancel), type: :button, class: 'sidebar-form-button secondary', onclick: 'showTargetMatchesSection()' %>
+  <%= form.submit I18n.t(:btn_save_target), class: 'sidebar-form-button primary' %>
 <% end %>

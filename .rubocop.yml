@@ -65,3 +65,11 @@ Style/FrozenStringLiteralComment:
 Style/ClassAndModuleChildren:
   Exclude:
     - app/controllers/**/**
+
+Naming/VariableNumber:
+  Exclude:
+    - spec/**/*
+
+Style/ModuleFunction:
+  Exclude:
+    - app/**/**

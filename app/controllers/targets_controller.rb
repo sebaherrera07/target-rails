@@ -4,6 +4,7 @@ class TargetsController < ApplicationController
 
   def index
     @targets = current_user.targets
+    @compatibles = compatible_targets
   end
 
   def create
@@ -27,8 +28,8 @@ class TargetsController < ApplicationController
   end
 
   def topic_icon
-    target = Target::TOPICS.detect { |tar| tar[:title] == params[:topic] }
-    render json: { icon: target[:icon] }, status: :ok
+    topic = Target::TOPICS.detect { |top| top[:title] == params[:topic] }
+    render json: { icon: topic[:icon] }, status: :ok
   end
 
   private
@@ -39,5 +40,9 @@ class TargetsController < ApplicationController
 
   def topics
     @topics = Target::TOPICS.map { |topic| [topic[:title], topic[:title]] }.to_h
+  end
+
+  def compatible_targets
+    TargetMatcherService.matches_for_all_targets(@targets)
   end
 end

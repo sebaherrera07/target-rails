@@ -19,6 +19,7 @@
     showCurrentLocation();
 
     map.addListener('click', function(e) {
+      showCreateTargetSection();
       placeMarkerAndPanTo(e.latLng, map);
       loadFormLatLng(e.latLng);
     });
@@ -112,16 +113,6 @@
     return iconUrl;
   }
 
-  function generateIconObject(iconUrl) {
-    var icon = {
-      url: iconUrl,
-      scaledSize: new google.maps.Size(25, 25),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(13, 13)
-    };
-    return icon;
-  }
-
   function showCurrentLocation() {
     infoWindow = new google.maps.InfoWindow;
     if (navigator.geolocation) {
@@ -136,12 +127,6 @@
         map.setCenter(pos);
       });
     }
-  }
-
-  function fillTargetModalData(clickedMarker) {
-    $('#targetTitle').text(clickedMarker.targetTitle);
-    $('#targetTopic').text(clickedMarker.targetTopic);
-    $('#targetSize').text(clickedMarker.targetSize);
   }
 
   function deleteTarget() {
