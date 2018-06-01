@@ -27,6 +27,8 @@ class User < ApplicationRecord
          :validatable, :confirmable
 
   has_many :targets, dependent: :destroy
+  has_many :messages
+  has_many :chats, foreign_key: :sender_id
 
   validates :name, presence: true
 end

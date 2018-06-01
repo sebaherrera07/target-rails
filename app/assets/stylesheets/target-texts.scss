@@ -34,13 +34,9 @@
     font-weight: bold;
     letter-spacing: 1.8px;
 
-    a {
-      color: $dark-gray;
-    }
+    a { color: $dark-gray; }
 
-    .sidebar-edit {
-      color: $bright-sky-blue;
-    }
+    .sidebar-edit { color: $bright-sky-blue; }
   }
 
   .sidebar-input-label {
@@ -68,26 +64,29 @@
     display: inline-block;
     font-size: 11px;
     height: 39px;
-    margin: 0 auto 130px;
+    margin: 5px auto 130px;
     min-width: 90px;
     width: 25%;
 
-    &.primary {
-      background-color: $black;
-    }
+    &.primary { background-color: $black; }
 
-    &.secondary {
-      background-color: $dark-gray;
-    }
+    &.secondary { background-color: $dark-gray; }
   }
 
   .sidebar-compatibles {
     float: left;
     font-size: 12px;
+    text-align: left;
 
-    &.title {
-      font-weight: bold;
-    }
+    &.title { font-weight: bold; }
+  }
+
+  .sidebar-compatibles-icon { margin: 6px 0; }
+
+  .sidebar-compatibles-envelope {
+    color: $macaroni-and-cheese-70-two;
+    font-size: 23px;
+    vertical-align: middle;
   }
 
 
@@ -168,17 +167,11 @@
     min-width: 70px;
     width: 20%;
 
-    &.primary {
-      background-color: $black;
-    }
+    &.primary { background-color: $black; }
 
-    &.secondary {
-      background-color: $dark-gray;
-    }
+    &.secondary { background-color: $dark-gray; }
 
-    &.warning {
-      background-color: $red-warning;
-    }
+    &.warning { background-color: $red-warning; }
   }
 
   .details-concept {
@@ -189,4 +182,75 @@
   .details-value {
     text-align: left;
   }
+
+  //------------------------------------
+  // # CHAT
+  //------------------------------------
+  .chat-user {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2.1px;
+  }
+
+  .chat-title {
+    color: $light-gray;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .messages-list {
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .sent-msg-container {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .chat-message {
+    color: var(--black);
+    font-size: 11px;
+    margin: 2px 15px;
+    padding: 10px;
+
+    &.sent {
+      background-color: $macaroni-and-cheese-70;
+      float: right;
+      position: relative;
+    }
+
+    &.received {
+      background-color: $light-gray-two;
+      float: left;
+    }
+  }
+
+  .chat-timestamp {
+    color: $light-gray;
+    font-size: 9px;
+    margin-top: 20px;
+
+    &.received {
+      order: 2;
+    }
+  }
+
+  .chat-button {
+    border: solid 1px $black;
+    box-shadow: 0 2px 4px 0 $shadow;
+    color: $white;
+    display: inline-block;
+    font-size: 11px;
+    height: 39px;
+    margin: 5px auto 20px;
+    min-width: 90px;
+    width: 25%;
+
+    &.primary { background-color: $black; }
+
+    &.secondary { background-color: $dark-gray; }
+  }
+
 }

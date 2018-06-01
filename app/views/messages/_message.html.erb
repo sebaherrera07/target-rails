@@ -1,0 +1,10 @@
+<li class="<%= user.id == message.user_id ? 'sent-msg-container' : '' %>">
+  <div class="row">
+    <span class="<%= user.id == message.user_id ? 'chat-timestamp' : 'chat-timestamp received' %>">
+      <%= message.created_at.strftime("%d/%m/%Y - %l:%M%p") %>
+    </span>
+    <div class="<%= user.id == message.user_id ? 'chat-message sent' : 'chat-message received' %>">
+      <%= message.body %>
+    </div>
+  </div>
+</li>

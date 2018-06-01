@@ -4,13 +4,17 @@
     <tbody>
       <% compatibles.each do |target| %>
         <tr>
+          <td><%= image_tag(get_topic_icon(target.topic), size: '24x24', class: 'sidebar-compatibles-icon') %></td>
           <td>
             <span class="sidebar-compatibles title"><%= target.title %></span><br>
             <span class="sidebar-compatibles">
-              <%= image_tag("user-default-avatar.png", size: "20x20") %> <%= target.user_name %>
+              <%= image_tag("user-default-avatar.png", size: '20x20') %> <%= target.user_name %>
             </span>
           </td>
-          <td><%= image_tag(get_topic_icon(target.topic), size: "24x24") %></td>
+          <td>
+            <%= link_to '<i class="fa fa-envelope"></i>'.html_safe, chats_path(user_id: target.user_id), 
+                method: :post, remote: true, name: "btn_open_chat", class: 'sidebar-compatibles-envelope' %>
+          </td>
         </tr>
       <% end %>
     </tbody>

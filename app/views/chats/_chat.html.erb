@@ -1,0 +1,33 @@
+<div id="chat_box" class="chat-box">
+  <h4 class="sidebar-subtitle"><%=I18n.t(:title_chat)%></h4>
+  <h5 class="chat-user"><%= chat.opposed_user(user).name %></h5>
+  <h5 class="chat-title">Titulo target</h5>
+
+  <div class="messages-list">
+    <ul>
+      <%= render 'chats/chat_content', messages: chat.messages, user: user %>
+    </ul>
+  </div>
+
+  <%= form_for [chat, chat.messages.new], remote: true, html: { id: "form_send_msg" } do |f| %>
+    <%= f.hidden_field :user_id, value: user.id %>
+    <%= f.text_area :body, class: "form-control" %>
+    <%= button_tag I18n.t(:btn_close), type: :button, class: 'chat-button secondary', onclick: 'showTargetMatchesSection()' %>
+    <%= f.submit I18n.t(:btn_send), class: "chat-button primary" %>
+  <% end %>
+</div>
+
+<script>
+  $(document).ready(function() {
+    var formSendMsg = $('#form_send_msg');
+
+    formSendMsg.on('ajax:success', handleMessageSent);
+
+    function handleMessageSent(event) {
+      var message_partial = event.detail[0]['message_partial'];
+      var chat = $('#chat_box');
+      chat.find('.messages-list').find('ul').append(message_partial);
+      chat.find('textarea').val('');
+    }
+  });
+</script>

@@ -1,6 +1,7 @@
 function showCreateTargetSection() {
   if ($('#sidebar_compatible_targets')) {
     $('#sidebar_compatible_targets').hide();
+    $('#sidebar_chat').hide();
     $('#sidebar_new_target').show();
   }
 }
@@ -8,7 +9,19 @@ function showCreateTargetSection() {
 function showTargetMatchesSection() {
   hideSelectedMarker();
   $('#sidebar_new_target').hide();
+  $('#sidebar_chat').hide();
   $('#sidebar_compatible_targets').show();
+}
+
+function showChatSection(chat_partial) {
+  $('#sidebar_new_target').hide();
+  $('#sidebar_compatible_targets').hide();
+  $('#sidebar_chat').show();
+  $('#sidebar_chat').html(chat_partial);
+  var chat = $('#chat_box');
+  var messages_list = chat.find('.messages-list');
+  var height = messages_list[0].scrollHeight;
+  messages_list.scrollTop(height);
 }
 
 function fillTargetModalData(clickedMarker) {

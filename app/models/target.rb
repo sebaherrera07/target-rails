@@ -29,7 +29,7 @@ class Target < ActiveRecord::Base
   ].freeze
 
   belongs_to :user
-  delegate :name, to: :user, prefix: true
+  delegate :name, :id, to: :user, prefix: true
 
   validates :title, :topic, :latitude, :longitude, presence: true
   validates :size,

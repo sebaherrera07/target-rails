@@ -9,9 +9,12 @@
 <script>
   $(document).ready(function() {
     var formNewTarget = $('#form_new_target');
+    var btnOpenChat = $('a[name=btn_open_chat]');
 
     formNewTarget.on('ajax:success', handleTargetCreated);
     formNewTarget.on('ajax:error', showErrorAlert);
+    
+    btnOpenChat.on('ajax:success', handleOpenChat);
 
     function handleTargetCreated(event) {
       toastr.success('<%=I18n.t(:alert_success_target_created)%>');
@@ -34,6 +37,11 @@
       } else {
         toastr.warning('<%=I18n.t(:alert_error_target_data_incomplete)%>');
       }
+    }
+
+    function handleOpenChat(event) {
+      var chat_partial = event.detail[0]['chat_partial'];
+      showChatSection(chat_partial);
     }
   });
 </script>

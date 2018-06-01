@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   resources :targets, only: %i[index create destroy], format: false do
     get :topic_icon, on: :collection
   end
+
+  resources :chats, only: %i[create] do
+    resources :messages, only: [:create]
+  end
 end

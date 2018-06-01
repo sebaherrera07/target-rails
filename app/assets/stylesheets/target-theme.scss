@@ -18,6 +18,11 @@ html {
   background-color: $dark-blue;
 }
 
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
 
 //------------------------------------
 // # MAP
@@ -71,7 +76,7 @@ html {
 }
 
 .sidebar-content {
-  min-height: 400px;
+  min-height: 450px;
 }
 
 

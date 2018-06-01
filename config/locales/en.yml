@@ -44,6 +44,7 @@ en:
   title_delete_target: "DELETE TARGET"
   title_target_data: "TARGET DATA"
   title_compatible_targets: "COMPATIBLE TARGETS"
+  title_chat: "CHAT"
 
   # Subtitles
   subtitle_find_people: "Find people near you & Connect"
@@ -66,6 +67,7 @@ en:
   btn_delete_target: "DELETE"
   btn_close: "CLOSE"
   btn_cancel: "CANCEL"
+  btn_send: "SEND"
 
   # Alerts
   alert_success_target_created: "Target created!"
